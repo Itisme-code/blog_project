@@ -1,0 +1,28 @@
+from django.dispatch import receiver,Signal
+from django.db.models.signals import pre_save, post_save
+from .models import Blog
+from django.core.mail import send_mail
+
+new_signal = Signal()
+
+
+
+
+
+@receiver(new_signal)
+def listen_new_signal(sender,**kwargs):
+    print(kwargs.get("mydata"),'is received')
+
+@receiver(pre_save,sender = Blog)
+def pre_save_blog(sender,instance,**kwargs):
+    instance.status = Blog.StatusEnum.DRAFT
+    print(instance, 'is being created')
+
+
+@receiver(post_save,sender = Blog)
+def post_save_blog(sender,instance,created,**kwargs):
+    if created:
+        print("email yuborildi")
+        send_mail("Blog saytdan habar",message='bizda yangi sayt qoyildi',recipient_list='umarnumber777@gmail.com',from_email='umarnumber777@gmail.com')
+    else:
+        print(instance, 'yangilandi')

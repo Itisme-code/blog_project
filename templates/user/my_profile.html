@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My prfofile</title>
+</head>
+<body>
+
+    <h1>My prfoile</h1>
+    {% for blog in blogs %}
+    <div>
+        <img src="{{ blog.imageURL }}" alt="">
+        <p>Tiltle: {{ blog.title }}</p>
+        <p>>Likes:{{ blog.likes.count }}</p>
+        <p>>Dislikes:{{ blog.dislikes.count }}</p>
+        <p>View: {{ blog.view }}</p>
+        <p>Description: {{ blog.description }}</p>
+
+        <a href=""></a>
+    </div>
+    {% endfor %}
+    
+</body>
+</html>

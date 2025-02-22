@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1 style="text-align: center;" >Ismoil's blog site</h1>
+
+    <div>
+        <h2>Categories</h2>
+
+        {% for categories in category %}
+            <a href="{% url 'blogs-filter' category.id %}"><p>{{ category.name }}</p></a>
+        {% endfor %}
+
+    </div>
+    
+
+    <!-- <form action="{% url 'blogs-filter' %}"></form> -->
+
+        <input type="text" name="title">
+
+        <button>Search</button>
+
+    <div style="display: flex;">
+        {% for blog in blogs %}
+        
+        <div style="width: 300px; margin: 0 20px;">
+            <img src="{{ blog.image.url }}" alt="{{ blog.title }}">
+            <p>Title: {{ blog.title }}</p>
+            <p>Description: {{ blog.description|truncatewords:20 }}</p>
+
+            
+        </div>
+        {% endfor %}
+
+    </div>
+</body>
+</html>
