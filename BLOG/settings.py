@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'blogging',
     'history',
     'report',
-    'user'
+    'user',
 ]
 
 AUTHENTICATION_BACKENDS = (
