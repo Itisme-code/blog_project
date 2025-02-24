@@ -24,4 +24,4 @@ def pre_save_blog(sender,instance,**kwargs):
 def post_save_blog(sender,instance,created,**kwargs):
     if created:
         subscribers = Subscribe.objects.values_list('email')
-        send_mail("Blog saytdan habar",message='bizda yangi sayt qoyildi',recipient_list='umarnumber777@gmail.com',from_email='umarnumber777@gmail.com')
+        send_mail("Blog saytdan habar",message='bizda yangi sayt qoyildi',recipient_list=subscribers,from_email=settings.EMAIL_HOST_USER)
